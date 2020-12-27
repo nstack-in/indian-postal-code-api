@@ -19,7 +19,8 @@ function welcome(req, res) {
 async function listStates(req, res) {
     let data = await db(PIN_CODE_TABLE)
         .groupBy('state')
-        .orderBy('state');
+        .orderBy('state')
+        .whereNotNull('Pincode');
 
     const status = data.length == 0 ? 404 : 200;
 
@@ -34,7 +35,8 @@ async function listDistricts(req, res) {
     let data = await db(PIN_CODE_TABLE)
         .groupBy('DistrictsName')
         .where({ state })
-        .orderBy('DistrictsName');
+        .orderBy('DistrictsName')
+        .whereNotNull('Pincode');
     const status = data.length == 0 ? 404 : 200;
 
 
@@ -51,7 +53,8 @@ async function listCity(req, res) {
         .groupBy('city')
         .where({ state })
         .where({ DistrictsName })
-        .orderBy('city');
+        .orderBy('city')
+        .whereNotNull('Pincode');
 
     const status = data.length == 0 ? 404 : 200;
 
@@ -69,7 +72,8 @@ async function listPostOffice(req, res) {
         .where({ state })
         .where({ DistrictsName })
         .where({ city })
-        .orderBy('PostOfficeName');
+        .orderBy('PostOfficeName')
+        .whereNotNull('Pincode');
     const status = data.length == 0 ? 404 : 200;
 
     return res.status(status).json({
