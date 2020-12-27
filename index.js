@@ -12,11 +12,12 @@ app.get('/', function (req, res) {
 });
 
 app.get('/api', apiController.welcome);
-app.get('/api/q/', apiController.listStates);
-app.get('/api/q/:state/', apiController.listDistricts);
-app.get('/api/q/:state/:DistrictsName/', apiController.listCity);
-app.get('/api/q/:state/:DistrictsName/:city', apiController.listPostOffice);
-app.get('/api/pin/:Pincode', apiController.findPostOffice);
+app.get('/api/pin/find/:Pincode', apiController.findPostOffice);
+
+app.get('/api/pin/', apiController.listStates);
+app.get('/api/pin/:state/', apiController.listDistricts);
+app.get('/api/pin/:state/:DistrictsName/', apiController.listCity);
+app.get('/api/pin/:state/:DistrictsName/:city', apiController.listPostOffice);
 
 app.get('*', function (req, res) {
   res.json({

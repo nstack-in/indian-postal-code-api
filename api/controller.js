@@ -1,5 +1,6 @@
 const knex = require('knex');
 const PIN_CODE_TABLE = 'pincodes';
+
 var db = knex({
     client: 'sqlite3',
     connection: {
@@ -17,9 +18,12 @@ function welcome(req, res) {
 
 async function listStates(req, res) {
     let data = await db(PIN_CODE_TABLE)
-        .distinct(['state']);
+        .groupBy('state')
+        .orderBy('state');
 
-    return res.json({
+    const status = data.length == 0 ? 404 : 200;
+
+    return res.status(status).json({
         'message': 'List of States',
         'data': data
     });
@@ -28,10 +32,13 @@ async function listDistricts(req, res) {
     const state = req.params.state;
 
     let data = await db(PIN_CODE_TABLE)
-        .distinct(['DistrictsName', 'state'])
-        .where({ state });
+        .groupBy('DistrictsName')
+        .where({ state })
+        .orderBy('DistrictsName');
+    const status = data.length == 0 ? 404 : 200;
 
-    return res.json({
+
+    return res.status(status).json({
         'message': `List of Districts in ${state}`,
         'data': data
     });
@@ -41,11 +48,14 @@ async function listCity(req, res) {
     const DistrictsName = req.params.DistrictsName;
 
     let data = await db(PIN_CODE_TABLE)
-        .distinct(['city', 'DistrictsName', 'state'])
+        .groupBy('city')
         .where({ state })
-        .where({ DistrictsName });
+        .where({ DistrictsName })
+        .orderBy('city');
 
-    return res.json({
+    const status = data.length == 0 ? 404 : 200;
+
+    return res.status(status).json({
         'message': `List of city in ${DistrictsName}, ${state}`,
         'data': data
     });
@@ -58,9 +68,11 @@ async function listPostOffice(req, res) {
     let data = await db(PIN_CODE_TABLE)
         .where({ state })
         .where({ DistrictsName })
-        .where({ city });
+        .where({ city })
+        .orderBy('PostOfficeName');
+    const status = data.length == 0 ? 404 : 200;
 
-    return res.json({
+    return res.status(status).json({
         'message': `List of Post Office in ${city}, ${DistrictsName}, ${state}`,
         'data': data
     });
@@ -69,12 +81,15 @@ async function findPostOffice(req, res) {
     const Pincode = req.params.Pincode;
     let data = await db(PIN_CODE_TABLE)
         .where({ Pincode });
+    const status = data.length == 0 ? 404 : 200;
 
-    return res.json({
-        'message': 'List of States',
-        'data': data
+    return res.status(status).json({
+        'message': `Post Office Detail of ${Pincode}`,
+        'data': data.length == 1 ? data[0] : null
     });
 }
+
+
 module.exports = {
     welcome,
     listStates,
