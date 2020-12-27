@@ -1,0 +1,14 @@
+{
+  "name": "Indian PIN Code API",
+  "description": "Indian PIN code(Postal Code) API ready to deploy to server.",
+  "repository": "https://github.com/nstack-in/indian-postal-code-api",
+  "logo": "https://raw.githubusercontent.com/nstack-in/indian-postal-code-api/master/public/node.svg",
+  "keywords": [
+    "node",
+    "postal-code",
+    "india",
+    "express",
+    "heroku"
+  ],
+  "image": "heroku/nodejs"
+}
