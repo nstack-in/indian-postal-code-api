@@ -4,11 +4,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indian PIN Code API</title>
+    <title>About | NStack India</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg shadow navbar-dark bg-primary py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">PIN CODE API</a>
 
+            <ul class="navbar-nav ml-auto" style="flex-direction: row;">
+                <li class="nav-item active">
+                    <a class="nav-link mr-4" href="#">Home </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container my-2">
+
+        <h2 id="get-stated my-2">Get Started</h2>
+        <p>
+            First of all we will deploy this to our heroku server. You are just one click from the deployment, you find
+            a button button <b>Deploy to Heroku</b>.
+        </p>
+        <a href="https://heroku.com/deploy?template=https://github.com/nstack-in/indian-postal-code-api"
+            target="_blank"><img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy"></a>
+
+        <h4 id="base-url" class="my-2">Base URL</h4>
+
+        <p>
+            Once your app is deployed to the heroku then you are ready to try this api. You can find the App URL on
+            heroku and it's going to be your base url.
+        </p>
+        <p>
+
+            Your base url will look like this <b>https://your-app-name.herokuapp.com</b>
+        </p>
+
+        <p>
+            Endpoint will be like this: base_url + path
+        </p>
+    </div>
+
+    <div class="container my-4" style="min-height: 54vh;">
+        <h1 class="py-2 ">
+            API Docs
+        </h1>
+        <div class="card my-2">
+            <div class="card-header"> <b>GET</b> /api/pin</div>
+            <div class="card-body">
+                <p class="my-2">
+                    Endpoint: https://your-app-name.herokuapp.com/api/pin
+                </p>
+                <div class="alert alert-primary">
+                    List of one Post Office from each state
+                </div>
+                <pre class="hljs"
+                    style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+{
+<span class="hljs-attr" style="color: rgb(92, 38, 153);">"message"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"List of one Post Office from each state"</span>,
+<span class="hljs-attr" style="color: rgb(92, 38, 153);">"data"</span>:[
+        {
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"postOfficeName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"pincode"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"districtsName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"city"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"state"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>
+        },
+        {
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"postOfficeName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"pincode"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"districtsName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"city"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"state"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>
+        }
+    ]
+}
+            </pre>
+            </div>
+        </div>
+        <div class="card my-2">
+            <div class="card-header"><b>GET</b> /api/pin/:state</div>
+            <div class="card-body">
+                <pre class="hljs"
+                    style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+{
+<span class="hljs-attr" style="color: rgb(92, 38, 153);">"message"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"List of one Post Office from selected district"</span>,
+<span class="hljs-attr" style="color: rgb(92, 38, 153);">"data"</span>:[
+        {
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"postOfficeName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"pincode"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"districtsName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"city"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"state"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>
+        },
+        {
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"postOfficeName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"pincode"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"districtsName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"city"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"state"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>
+        }
+    ]
+}
+            </pre>
+            </div>
+        </div>
+        <div class="card my-2">
+            <div class="card-header"><b>GET</b> /api/pin/:state/:district</div>
+            <div class="card-body">
+                <div class="alert alert-primary">
+                    List of one Post Office from all district of State
+                </div>
+                <pre class="hljs"
+                    style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+{
+<span class="hljs-attr" style="color: rgb(92, 38, 153);">"message"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"List of one Post Office from all district of State"</span>,
+<span class="hljs-attr" style="color: rgb(92, 38, 153);">"data"</span>:[
+        {
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"postOfficeName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"pincode"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"districtsName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"city"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"state"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>
+        },
+        {
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"postOfficeName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"pincode"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"districtsName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"city"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"state"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>
+        }
+    ]
+}
+            </pre>
+            </div>
+        </div>
+        <div class="card my-2">
+            <div class="card-header"><b>GET</b> /api/pin/:state/:district/:city</div>
+            <div class="card-body">
+                <div class="alert alert-primary">
+                    List of all Post Office from selected city
+                </div>
+                <pre class="hljs"
+                    style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+{
+<span class="hljs-attr" style="color: rgb(92, 38, 153);">"message"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"List of all Post Office from selected city"</span>,
+<span class="hljs-attr" style="color: rgb(92, 38, 153);">"data"</span>:[
+        {
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"postOfficeName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"pincode"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"districtsName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"city"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"state"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>
+        },
+        {
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"postOfficeName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"pincode"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"districtsName"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"city"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>,
+            <span class="hljs-attr" style="color: rgb(92, 38, 153);">"state"</span>:<span class="hljs-string" style="color: rgb(196, 26, 22);">"string"</span>
+        }
+    ]
+}
+            </pre>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light py-4">
+        <div class="container">
+            <div class="text-center">
+                All Right Reserver ®
+            </div>
+        </div>
+    </footer>
+    <script data-name=BMC-Widget src=https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js data-id=nitishk72
+        data-description="Support me on Buy me a coffee!"
+        data-message="Thank you for visiting. You can now buy me a coffee!" data-color=#5F7FFF data-position=Right
+        data-x_margin=18 data-y_margin=18></script>
 </body>
 
 </html>

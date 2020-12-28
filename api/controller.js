@@ -25,7 +25,7 @@ async function listStates(req, res) {
     const status = data.length == 0 ? 404 : 200;
 
     return res.status(status).json({
-        'message': 'List of States',
+        'message': 'List of one Post Office from each state',
         'data': data
     });
 }
@@ -41,7 +41,7 @@ async function listDistricts(req, res) {
 
 
     return res.status(status).json({
-        'message': `List of Districts in ${state}`,
+        'message': `List of one Post Office from all district of ${state} State`,
         'data': data
     });
 }
@@ -59,7 +59,7 @@ async function listCity(req, res) {
     const status = data.length == 0 ? 404 : 200;
 
     return res.status(status).json({
-        'message': `List of city in ${DistrictsName}, ${state}`,
+        'message': `List of one Post Office from ${DistrictsName} District`,
         'data': data
     });
 }
@@ -77,7 +77,7 @@ async function listPostOffice(req, res) {
     const status = data.length == 0 ? 404 : 200;
 
     return res.status(status).json({
-        'message': `List of Post Office in ${city}, ${DistrictsName}, ${state}`,
+        'message': `List of all Post Office from ${city} City`,
         'data': data
     });
 }
@@ -88,8 +88,11 @@ async function findPostOffice(req, res) {
     const status = data.length == 0 ? 404 : 200;
 
     return res.status(status).json({
-        'message': `Post Office Detail of ${Pincode}`,
-        'data': data.length == 1 ? data[0] : null
+        // Not checking if PIN is number or not
+        'message': Pincode.length != 6
+            ? `Indian PIN Code are of 6 character only`
+            : `Post Office Detail of ${Pincode}`,
+        'data': data.length == 1 ? data[0] : {}
     });
 }
 
